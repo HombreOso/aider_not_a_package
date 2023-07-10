@@ -504,7 +504,7 @@ class Coder:
         #     dict(role="user", content=inp),
         # ]
 
-        self.cur_messages = [
+        self.cur_messages += [
             dict(role="user", content=inp),
         ]
         # -----------------------------------------------
