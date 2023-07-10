@@ -907,7 +907,7 @@ class Coder:
     def get_commit_message(self, diffs, context):
         if len(diffs) >= 4 * 1024 * 4:
             self.io.tool_error(
-                f"Diff is too large for {models.GPT35.name} to generate a commit message."
+                f"Diff is too large for {models.CodeBison.name} to generate a commit message."
             )
             return
 
