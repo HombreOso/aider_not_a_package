@@ -673,7 +673,7 @@ class Coder:
 
         response = model_vertex.send_message(final_message, **parameters)
 
-        # print("final message", final_message)
+        print("\n\n\n\nfinal message", final_message, "\n\n\n\n\n")
 
         print("response: ", response.text)
 
