@@ -675,7 +675,7 @@ class Coder:
 
         # print("final message", final_message)
 
-        # print(response.text)
+        print(response.text)
 
         # ---------------------------------------------
 
