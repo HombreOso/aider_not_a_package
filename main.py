@@ -283,16 +283,16 @@ def main(args=None, input=None, output=None):
 
     io.tool_output(*sys.argv, log_only=True)
 
-    if not args.openai_api_key:
-        if os.name == "nt":
-            io.tool_error(
-                "No OpenAI API key provided. Use --openai-api-key or setx OPENAI_API_KEY."
-            )
-        else:
-            io.tool_error(
-                "No OpenAI API key provided. Use --openai-api-key or export OPENAI_API_KEY."
-            )
-        return 1
+    # if not args.openai_api_key:
+    #     if os.name == "nt":
+    #         io.tool_error(
+    #             "No OpenAI API key provided. Use --openai-api-key or setx OPENAI_API_KEY."
+    #         )
+    #     else:
+    #         io.tool_error(
+    #             "No OpenAI API key provided. Use --openai-api-key or export OPENAI_API_KEY."
+    #         )
+    #     return 1
 
     main_model = models.Model(args.model)
 
