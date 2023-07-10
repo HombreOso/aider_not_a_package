@@ -295,7 +295,7 @@ def main(args=None, input=None, output=None):
             #     "No OpenAI API key provided. Use --openai-api-key or export OPENAI_API_KEY."
             # )
             print("No OPEN-AI-Key on non-Winddows")
-        return 1
+        # return 1
 
     main_model = models.Model(args.model)
 
