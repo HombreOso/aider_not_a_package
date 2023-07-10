@@ -1,6 +1,6 @@
 import diffs
-from base_coder import Coder
-from single_wholefile_func_prompts import SingleWholeFileFunctionPrompts
+from .base_coder import Coder
+from .single_wholefile_func_prompts import SingleWholeFileFunctionPrompts
 
 
 class SingleWholeFileFunctionCoder(Coder):

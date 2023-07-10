@@ -2,8 +2,8 @@ from pathlib import Path
 
 import diffs
 
-from base_coder import Coder
-from wholefile_prompts import WholeFilePrompts
+from .base_coder import Coder
+from .wholefile_prompts import WholeFilePrompts
 
 
 class WholeFileCoder(Coder):

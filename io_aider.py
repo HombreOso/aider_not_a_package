@@ -14,7 +14,6 @@ from pygments.util import ClassNotFound
 from rich.console import Console
 from rich.text import Text
 
-from .dump import dump  # noqa: F401
 
 
 class AutoCompleter(Completer):
