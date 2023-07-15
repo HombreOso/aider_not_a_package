@@ -23,14 +23,14 @@ class Commands:
         # KeyError: 'Could not automatically map codechat-bison@001 to a tokeniser. 
         # Please use `tiktok.get_encoding` to explicitly get the tokeniser you expect.'
 
-        # self.tokenizer = tiktoken.encoding_for_model(coder.main_model.name)
+        self.tokenizer = tiktoken.encoding_for_model(coder.main_model.name)
 
         # ----------------------------------------------------
 
         # ----------------------------------------------------
         # added because of the above errror
 
-        self.tokenizer = coder.main_model.name
+        # self.tokenizer = coder.main_model.name
         # ----------------------------------------------------
 
 

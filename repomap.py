@@ -77,7 +77,7 @@ class RepoMap:
         self,
         map_tokens=1024,
         root=None,
-        main_model=models.CodeBison,
+        main_model=models.GPT4,
         io=None,
         repo_content_prefix=None,
         verbose=False,
@@ -105,13 +105,13 @@ class RepoMap:
         # KeyError: 'Could not automatically map codechat-bison@001 to a tokeniser. 
         # Please use `tiktok.get_encoding` to explicitly get the tokeniser you expect.'
 
-        # self.tokenizer = tiktoken.encoding_for_model(main_model.name)
+        self.tokenizer = tiktoken.encoding_for_model(main_model.name)
         # ----------------------------------------------------
 
         # ----------------------------------------------------
         # added because of the above error
 
-        self.tokenizer = main_model.name
+        # self.tokenizer = main_model.name
         # ----------------------------------------------------
 
         
@@ -153,13 +153,13 @@ class RepoMap:
             if files_listing:
                 # --------------------------------------------
                 ## commented out since there is no tokenizer for Vertex AI model names
-                # num_tokens = self.token_count(files_listing)
+                num_tokens = self.token_count(files_listing)
                 # --------------------------------------------
 
 
                 # --------------------------------------------
                 ## added since there is no tokenizer for Vertex AI model names
-                num_tokens = 1024
+                # num_tokens = 1024
                 # --------------------------------------------
 
                 if self.verbose:
@@ -171,13 +171,13 @@ class RepoMap:
         ctags_msg = ""
         # --------------------------------------------
         ## commented out since there is no tokenizer for Vertex AI model names
-        # num_tokens = self.token_count(files_listing)
+        num_tokens = self.token_count(files_listing)
         # --------------------------------------------
 
 
         # --------------------------------------------
         ## added since there is no tokenizer for Vertex AI model names
-        num_tokens = 1024
+        # num_tokens = 1024
         # --------------------------------------------
         if self.verbose:
             self.io.tool_output(f"simple map: {num_tokens/1024:.1f} k-tokens")
@@ -424,12 +424,12 @@ class RepoMap:
 
             # --------------------------------------------
             ## commented out since there is no tokenizer for Vertex AI model names
-            # num_tokens = self.token_count(tree)
+            num_tokens = self.token_count(tree)
 
             # --------------------------------------------
             ## added since there is no tokenizer for Vertex AI model names
             
-            num_tokens = 1024
+            # num_tokens = 1024
 
             if num_tokens < self.max_map_tokens:
                 best_tree = tree

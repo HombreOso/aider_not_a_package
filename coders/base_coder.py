@@ -100,7 +100,7 @@ class Coder:
         
 
         if not main_model:
-            main_model = models.CodeBison
+            main_model = models.GPT4
 
         if not main_model.always_available:
             if not check_model_availability(main_model):
@@ -661,21 +661,21 @@ class Coder:
         # --------------------------------------------
         # Vertex AI
         
-        project_id = "aihackaton230707"
-        model_id = "codechat-bison@001"
-        location = "us-central1"
+        # project_id = "aihackaton230707"
+        # model_id = "codechat-bison@001"
+        # location = "us-central1"
 
-        parameters = {"temperature": 0.2, "max_output_tokens": 1024}
+        # parameters = {"temperature": 0.2, "max_output_tokens": 1024}
 
-        model_vertex = ChatModel(project_id, model_id, location)
-        model_vertex.initialize()
-        final_message = " ".join([message["content"] for message in messages])
+        # model_vertex = ChatModel(project_id, model_id, location)
+        # model_vertex.initialize()
+        # final_message = " ".join([message["content"] for message in messages])
 
-        response = model_vertex.send_message(final_message, **parameters)
+        # response = model_vertex.send_message(final_message, **parameters)
 
-        print("\n\n\n\nfinal message", final_message, "\n\n\n\n\n")
+        # print("\n\n\n\nfinal message", final_message, "\n\n\n\n\n")
 
-        print("response: ", response.text)
+        # print("response: ", response.text)
 
         # ---------------------------------------------
 
@@ -694,24 +694,24 @@ class Coder:
 
 
         # ---------------------------------------------------
-        # commented our to return the response of Vertex AI and avoid Open AI authentication attempt
+        # commented out to return the response of Vertex AI and avoid Open AI authentication attempt
 
-        # res = openai.ChatCompletion.create(**kwargs)
+        res = openai.ChatCompletion.create(**kwargs)
         # ---------------------------------------------------
 
 
       
         # ---------------------------------------------------
-        # commented our to return the response of Vertex AI
+        # commented out to return the response of Vertex AI
 
-        # return res
+        return res
 
         # ---------------------------------------------------
 
 
         # ---------------------------------------------------
         # return the response of Vertex AI
-        return response
+        # return response
         # ---------------------------------------------------
 
 
@@ -834,8 +834,8 @@ class Coder:
                 # ----------------------------------------------
                 ## commented out because Vertex AI has different response object structure
                 
-                # if chunk.choices[0].finish_reason == "length":
-                #     raise ExhaustedContextWindow()
+                if chunk.choices[0].finish_reason == "length":
+                    raise ExhaustedContextWindow()
 
                 # ----------------------------------------------
 
@@ -907,7 +907,7 @@ class Coder:
     def get_commit_message(self, diffs, context):
         if len(diffs) >= 4 * 1024 * 4:
             self.io.tool_error(
-                f"Diff is too large for {models.CodeBison.name} to generate a commit message."
+                f"Diff is too large for {models.GPT4.name} to generate a commit message."
             )
             return
 
@@ -921,7 +921,7 @@ class Coder:
         try:
             interrupted = self.send(
                 messages,
-                model=models.CodeBison.name,
+                model=models.GPT4.name,
                 silent=True,
             )
         except openai.error.InvalidRequestError:
